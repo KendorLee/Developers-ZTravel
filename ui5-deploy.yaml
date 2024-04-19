@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: ztravelapparf
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: abap-cloud-abap-4a40c4actrial-dev
+          url: https://6481e2fd-5b71-485d-994c-63bf74fd138a.abap.us10.hana.ondemand.com
+          scp: true
+        app:
+          name: ZTRAVEL_APP_ARF
+          package: ZARF
+          transport: TRLK906270
+        exclude:
+          - /test/
